@@ -207,3 +207,15 @@ for (n = 0; n < color.length; n++) {
   // Output the string to the console
   console.log(output);
 }
+
+function setUserName() {
+  const myName = prompt("Please enter your name.");
+  if (!myName) {
+    setUserName();
+  } else {
+    localStorage.setItem("name", myName);
+    myHeading.textContent = `Mozilla is cool, ${myName}`;
+  }
+}
+
+setUserName();
