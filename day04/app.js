@@ -73,3 +73,137 @@ function addEls(arr, input) {
 }
 
 console.log(addEls([23, 12, 25], 2));
+
+// remove duplicates from an array
+
+function removeDuplicates(arr) {
+  let uniqueNumsSet = new Set(arr);
+
+  return [...uniqueNumsSet];
+}
+
+console.log(removeDuplicates([1, 2, 2, 4, 5, 4, 7, 8, 7, 3, 6]));
+
+// 2nd way to solve this problem
+
+function removeDuplicatesFromArr(arr) {
+  let x,
+    len = arr.length,
+    out = [],
+    obj = {};
+
+  for (x = 0; x < len; x++) {
+    obj[arr[x]] = 0;
+  }
+
+  // for of is preferable for object iterations
+  for (x in obj) {
+    out.push(Number(x));
+  }
+
+  return out;
+}
+console.log(removeDuplicatesFromArr([1, 2, 2, 4, 5, 4, 7, 8, 7, 3, 6]));
+
+let obj = {
+  1: 1,
+  1: 2,
+  2: 1,
+  3: 1,
+};
+
+console.log(Object.keys(obj));
+
+/**
+    color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+    o = ["th","st","nd","rd"]
+    Write a JavaScript program to display the colors in the following way :
+    "1st choice is Blue ."
+    "2nd choice is Green."
+    "3rd choice is Red."
+ */
+
+function createChoice(colors, out) {
+  let res = "";
+  for (let i = 0; i < colors.length; i++) {
+    if (i % 10 == 1) {
+      res += `${i}${out[1]} choice is ${colors[i - 1]},`;
+    } else if (i % 10 == 2) {
+      res += `${i}${out[2]} choice is ${colors[i - 1]},`;
+    } else if (i % 10 == 3) {
+      res += `${i}${out[3]} choice is ${colors[i - 1]},`;
+    }
+  }
+  return res;
+}
+
+console.log(
+  createChoice(
+    [
+      "Blue ",
+      "Green",
+      "Red",
+      "Orange",
+      "Violet",
+      "Indigo",
+      "Yellow ",
+      "Green",
+      "Green",
+      "Green",
+      "red",
+      "red",
+    ],
+    ["th", "st", "nd", "rd"]
+  )
+);
+
+// using ordinal number
+function Ordinal(n) {
+  // Define an array 'o' for suffixes of ordinal numbers
+  var o = ["th", "st", "nd", "rd"],
+    x = n % 100;
+  console.log(x);
+  console.log(x + (o[(x - 20) % 10] || o[x] || o[0]));
+  // Return the ordinal number with the appropriate suffix
+  return x + (o[(x - 20) % 10] || o[x] || o[0]);
+}
+
+var color = [
+  "Blue ",
+  "Green",
+  "Red",
+  "Orange",
+  "Violet",
+  "Indigo",
+  "Yellow ",
+  "pink",
+  "emerald",
+  "sky",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+  "light",
+];
+
+for (n = 0; n < color.length; n++) {
+  // Calculate the ordinal number for the current position
+  var ordinal = n + 1;
+
+  // Create a string with the ordinal number, color choice, and a period
+  var output = Ordinal(ordinal) + " choice is " + color[n] + ".";
+
+  // Output the string to the console
+  console.log(output);
+}
