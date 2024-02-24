@@ -209,6 +209,7 @@ function testBlock() {
   console.log(this);
 })(); //logs the "window" object
 
+// apply
 const details = {
   message: "world",
 };
@@ -219,6 +220,7 @@ function getMessage(word) {
 
 console.log(getMessage.apply(details, ["Hello"]));
 
+// call
 const person = {
   name: "Marko Polo",
 };
@@ -227,9 +229,9 @@ function greeting(greetingMessage) {
   return `${greetingMessage} ${this.name}`;
 }
 
-console.log(greeting.call(person, "Hello"));
+const boundFunction = greeting.bind(person);
+console.log(boundFunction("Patret"));
 
-// const obj1 = {
 //   result: 0,
 // };
 
@@ -247,3 +249,17 @@ console.log(greeting.call(person, "Hello"));
 
 // console.log(reduceAdd.apply(obj1, [1, 2, 3, 4, 5]));
 // reduceAdd.call(obj2, 1, 2, 3, 4, 5); // returns 15
+
+Array.prototype.myMap = function (callback) {
+  const newArray = []; // Create a new array to store the results
+  for (let i = 0; i < this.length; i++) {
+    // Loop through each element of the array
+    newArray.push(callback(this[i], i, this)); // Call the callback function for each element
+    // and push the result to the new array
+  }
+  return newArray; // Return the new array
+};
+const nums = [1, 2, 3, 4].myMap((el, idx, arr) => {
+  console.log(el, idx, arr);
+});
+console.log(nums);
