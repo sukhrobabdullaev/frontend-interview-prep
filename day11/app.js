@@ -263,3 +263,5 @@ const nums = [1, 2, 3, 4].myMap((el, idx, arr) => {
   console.log(el, idx, arr);
 });
 console.log(nums);
+
+alert({});
