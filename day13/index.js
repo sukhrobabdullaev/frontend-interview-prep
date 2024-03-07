@@ -37,12 +37,6 @@ const arr = [
   { name: "b", bucket: [1, 6] },
 ];
 
-/**
- * sort() => 'a','a','b','c'...
- * bucket.concat(bucket+1)
- *
- *
- */
 let newArr = [];
 
 for (let i = 0; i < arr.length; i++) {
@@ -52,18 +46,25 @@ for (let i = 0; i < arr.length; i++) {
       newArr.push(arr[i].name);
       buckets.push(arr[i].bucket, arr[j].bucket);
     }
+    console.log(buckets);
   }
 }
 console.log(newArr);
 
-const combinedArr = arr.reduce((acc, obj) => {
-  const existingObj = acc.find((item) => item.name === obj.name);
-  console.log(existingObj);
-  if (existingObj) {
-    existingObj.bucket = [...new Set([...existingObj.bucket, ...obj.bucket])];
-  } else {
-    acc.push({ name: obj.name, bucket: [...new Set(obj.bucket)] });
-  }
+// const combinedArr = arr.reduce((acc, obj) => {
+//   const existingObj = acc.find((item) => item.name === obj.name);
+//   console.log(existingObj);
 
-  return acc;
-}, []);
+//   if (existingObj) {
+//     existingObj.bucket = [...new Set([...existingObj.bucket, ...obj.bucket])];
+//   } else {
+//     acc.push({ name: obj.name, bucket: [...new Set(obj.bucket)] });
+//   }
+
+//   return acc;
+// }, []);
+const nums1 = [4, 9, 5],
+  nums2 = [9, 4, 9, 8, 4];
+const map = new Map();
+map.set(nums1[0], true);
+console.log(map);
